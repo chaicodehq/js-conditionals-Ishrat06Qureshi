@@ -32,4 +32,29 @@
  */
 export function calculateCoffeePrice(size, type, extras = {}) {
   // Your code here
+let validSizes = {
+    'SMALL':3,
+     'MEDIUM':4,
+     'LARGE' :5}
+   
+ let validTypes = {
+  "REGULAR":0,
+  "LATTE":1,
+  "CAPPUCCINO":1.50,
+  "MOCHA":2
+ }
+  if (
+    typeof size !== "string" ||
+    typeof type !== "string" ||
+    !validSizes.hasOwnProperty(size.toUpperCase()) ||
+    !validTypes.hasOwnProperty(type.toUpperCase())
+  )
+    {
+      return -1
+    }
+ 
+
+  let price = validSizes[ size.toUpperCase()] + validTypes[ type.toUpperCase()] +
+  ( extras['whippedCream'] == true ? 0.50 : 0) + (extras['extraShot'] == true ? 0.75 : 0)
+  return price
 }

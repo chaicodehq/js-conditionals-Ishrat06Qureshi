@@ -31,4 +31,25 @@
  */
 export function calculateTip(billAmount, serviceRating) {
   // Your code here
+  let servicePercentage = {
+    1:5,
+    2:10,
+    3:15,
+    4:20,
+    5:25
+  }
+  let calculatedTipObject= {}
+ 
+  if(typeof billAmount !== 'number' || billAmount <= 0 ||
+     Number.isNaN(billAmount) || !Number.isInteger(serviceRating) ||  typeof serviceRating !== 'number' ||  !(serviceRating >=1 && serviceRating <= 5 ) ) {
+      return null
+     }
+    else {
+         calculatedTipObject.tipPercentage= servicePercentage[serviceRating];
+         let tipAmount = billAmount * (servicePercentage[serviceRating] * 0.01)
+         calculatedTipObject.tipAmount = Number(tipAmount.toFixed(2));
+         calculatedTipObject.totalAmount = Number((billAmount + tipAmount).toFixed(2))
+         return calculatedTipObject
+
+    }
 }

@@ -26,5 +26,22 @@
  * @returns {number} Total tax amount owed
  */
 export function calculateTax(income) {
+  if(typeof income !== 'number' || income <=0 || Number.isNaN(income)){
+    return 0
+  }
+  
+  if(income >=10001 && income<=30000){
+   return ((income - 10000)*0.1);
+  }
+  else  if(income >=30001 && income<=70000){
+   return ((income - 30000)*0.2 + 2000);
+  }
+  else if(income > 70000){
+       return ((income - 70000)*0.3 + 10000);
+
+  }
+  else {
+    return 0
+  }
   // Your code here
 }

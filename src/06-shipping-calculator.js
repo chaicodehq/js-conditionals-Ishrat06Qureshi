@@ -30,4 +30,24 @@
  */
 export function calculateShipping(weight, country, orderTotal) {
   // Your code here
+  
+  if(typeof weight !== 'number' || weight <=0    || Number.isNaN(weight) || typeof country != 'string' 
+  || typeof orderTotal !== 'number' || Number.isNaN(orderTotal)  ||  orderTotal <0 ){
+    return -1
+  }
+  const isDomestic = country.toUpperCase() === 'US'
+ if((isDomestic && orderTotal > 50) || ( !isDomestic && orderTotal > 100 ))
+ {
+   return 0
+ }
+ else if( isDomestic){
+   if( weight <=1) return 5
+   if(  weight <=5 ) return 10
+   return 15
+ } else {
+     if( weight <=1) return 15
+   if(  weight <=5 ) return 25
+   return 40
+ }
 }
+

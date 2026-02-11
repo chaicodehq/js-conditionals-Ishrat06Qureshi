@@ -32,4 +32,59 @@
  */
 export function getSeasonActivity(month, temperature) {
   // Your code here
+   let monthsNumber = {
+    'Winter' : [12, 1, 2],
+    'Spring' : [3, 4, 5],
+    'Summer' : [6,7,8],
+    'Autumn' : [9,10,11]
+  }
+  let activities = {
+    Winter:['skiing','ice skating'],
+    Spring:['hiking','museum visit'],
+    Summer:['swimming','cycling'],
+    Autumn:['nature walk','reading at a cafe'],
+  }
+  let  activity;
+  if(typeof month !== 'number' || !(month >=1 && month <=12) || typeof temperature !== 'number' ){
+    return null
+  }
+  const getMonth = (month) => {
+  let result
+   for (let season in monthsNumber) {
+   if (monthsNumber[season].includes(month)) {
+    result =  season;
+     break } 
 }
+    return result
+  }
+ let givenMonth = getMonth(month)
+  console.log(-5 < 0)
+  if(givenMonth === 'Winter' && temperature < 0){
+    activity = activities['Winter'][0]
+  } else if(givenMonth === 'Winter' && temperature >= 0){
+    activity = activities['Winter'][1]
+  }
+  else if(givenMonth === 'Spring' && temperature > 20){
+    activity = activities['Spring'][0]
+  }
+  else if(givenMonth === 'Spring' && temperature <= 20){
+    activity = activities['Spring'][1]
+  }
+  else if(givenMonth === 'Summer' && temperature > 35){
+    activity = activities['Summer'][0]
+  }
+  else if(givenMonth === 'Summer' && temperature <= 35){
+    activity = activities['Summer'][1]
+  }
+  else if(givenMonth === 'Autumn' && temperature > 15){
+    activity = activities['Autumn'][0]
+  }
+   else if(givenMonth === 'Autumn' && temperature <= 15){
+    activity = activities['Autumn'][1]
+  }
+  return {
+    season:givenMonth,
+    activity
+  } 
+  }
+  
